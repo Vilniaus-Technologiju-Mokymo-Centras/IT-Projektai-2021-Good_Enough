@@ -1,0 +1,93 @@
+#Wed Apr 14 19:36:46 EEST 2021
+\!/=
+/configuration/org.eclipse.core.net/org.eclipse.core.net.hasMigrated=true
+/configuration/org.eclipse.equinox.p2.garbagecollector/gc_enabled=false
+/configuration/org.eclipse.ui.ide/MAX_RECENT_WORKSPACES=10
+/configuration/org.eclipse.ui.ide/RECENT_WORKSPACES=C\:\\Users\\greta\\eclipse-workspace
+/configuration/org.eclipse.ui.ide/RECENT_WORKSPACES_PROTOCOL=3
+/configuration/org.eclipse.ui.ide/SHOW_RECENT_WORKSPACES=false
+/configuration/org.eclipse.ui.ide/SHOW_WORKSPACE_SELECTION_DIALOG=false
+/instance/org.eclipse.core.net/org.eclipse.core.net.hasMigrated=true
+/instance/org.eclipse.core.resources/version=1
+/instance/org.eclipse.debug.core/org.eclipse.debug.core.USE_STEP_FILTERS=true
+/instance/org.eclipse.debug.core/prefWatchExpressions=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<watchExpressions/>\r\n
+/instance/org.eclipse.debug.ui/org.eclipse.debug.ui.PREF_LAUNCH_PERSPECTIVES=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<launchPerspectives/>\r\n
+/instance/org.eclipse.debug.ui/org.eclipse.debug.ui.cancel_launch_with_compile_errors=always
+/instance/org.eclipse.debug.ui/org.eclipse.debug.ui.save_dirty_editors_before_launch=always
+/instance/org.eclipse.debug.ui/org.eclipse.debug.ui.user_view_bindings=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<viewBindings>\r\n    <view id\="org.eclipse.jdt.debug.ui.DisplayView">\r\n        <perspective id\="org.eclipse.debug.ui.DebugPerspective" userAction\="opened"/>\r\n    </view>\r\n    <view id\="org.eclipse.debug.ui.ExpressionView">\r\n        <perspective id\="org.eclipse.debug.ui.DebugPerspective" userAction\="opened"/>\r\n    </view>\r\n</viewBindings>\r\n
+/instance/org.eclipse.debug.ui/pref_state_memento.org.eclipse.debug.ui.BreakpointView=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<VariablesViewMemento org.eclipse.debug.ui.SASH_DETAILS_PART\="315" org.eclipse.debug.ui.SASH_VIEW_PART\="684">\r\n<PRESENTATION_CONTEXT_PROPERTIES IMemento.internal.id\="org.eclipse.debug.ui.BreakpointView">\r\n<BOOLEAN BOOLEAN\="true" IMemento.internal.id\="org.eclipse.debug.ui.check"/>\r\n</PRESENTATION_CONTEXT_PROPERTIES>\r\n</VariablesViewMemento>
+/instance/org.eclipse.debug.ui/pref_state_memento.org.eclipse.debug.ui.DebugVieworg.eclipse.debug.ui.DebugView=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<DebugViewMemento org.eclipse.debug.ui.BREADCRUMB_DROPDOWN_AUTO_EXPAND\="false"/>
+/instance/org.eclipse.debug.ui/pref_state_memento.org.eclipse.debug.ui.ExpressionView=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<VariablesViewMemento org.eclipse.debug.ui.SASH_DETAILS_PART\="315" org.eclipse.debug.ui.SASH_VIEW_PART\="684">\r\n<PRESENTATION_CONTEXT_PROPERTIES IMemento.internal.id\="org.eclipse.debug.ui.ExpressionView">\r\n<BOOLEAN BOOLEAN\="true" IMemento.internal.id\="PRESENTATION_SHOW_LOGICAL_STRUCTURES"/>\r\n</PRESENTATION_CONTEXT_PROPERTIES>\r\n</VariablesViewMemento>
+/instance/org.eclipse.debug.ui/pref_state_memento.org.eclipse.debug.ui.VariableView=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<VariablesViewMemento org.eclipse.debug.ui.SASH_DETAILS_PART\="315" org.eclipse.debug.ui.SASH_VIEW_PART\="684">\r\n<PRESENTATION_CONTEXT_PROPERTIES IMemento.internal.id\="org.eclipse.debug.ui.VariableView">\r\n<BOOLEAN BOOLEAN\="true" IMemento.internal.id\="PRESENTATION_SHOW_LOGICAL_STRUCTURES"/>\r\n</PRESENTATION_CONTEXT_PROPERTIES>\r\n</VariablesViewMemento>
+/instance/org.eclipse.debug.ui/preferredDetailPanes=DefaultDetailPane,org.eclipse.jdt.debug.ui.JAVA_VARIABLE_DETAIL_PANE_VARIABLES\:org.eclipse.jdt.debug.ui.JAVA_VARIABLE_DETAIL_PANE_VARIABLES|DefaultDetailPane\:DefaultDetailPane|
+/instance/org.eclipse.debug.ui/preferredTargets=default\:default|
+/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.codeComplete.visibilityCheck=enabled
+/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.codegen.inlineJsrBytecode=enabled
+/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.codegen.targetPlatform=14
+/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.compliance=14
+/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.problem.assertIdentifier=error
+/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.problem.enumIdentifier=error
+/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.release=enabled
+/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.source=14
+/instance/org.eclipse.jdt.debug.ui/org.eclipse.debug.ui.ExpressionView.org.eclipse.jdt.debug.ui.show_null_entries=true
+/instance/org.eclipse.jdt.debug.ui/org.eclipse.debug.ui.VariableView.org.eclipse.jdt.debug.ui.show_null_entries=true
+/instance/org.eclipse.jdt.junit/org.eclipse.jdt.junit.content_assist_favorite_static_members_migrated=true
+/instance/org.eclipse.jdt.launching/org.eclipse.jdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<vmSettings defaultVM\="57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1601646010293" defaultVMConnector\="">\r\n    <vmType id\="org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType">\r\n        <vm id\="1601646010293" name\="jre" path\="C\:\\Users\\greta\\.p2\\pool\\plugins\\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_14.0.2.v20200815-0932\\jre"/>\r\n    </vmType>\r\n</vmSettings>\r\n
+/instance/org.eclipse.jdt.ui/content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="Abbreviations"><rhs name\="Abbreviations"/></lhs><lhs name\="java.lang.Enum"><rhs name\="Education"/></lhs><lhs name\="java.lang.constant.Constable"><rhs name\="Education"/></lhs><lhs name\="Education"><rhs name\="Education"/></lhs><lhs name\="philatelist.Philatelist"><rhs name\="lt.vtmc.philatelist.PhilatelistImpl"/></lhs><lhs name\="lt.vtmc.municipality.Municipality"><rhs name\="lt.vtmc.municipality.MunicipalityImpl"/></lhs><lhs name\="GreeterLanguageStrategy"><rhs name\="LithuanianGreeterStrategy"/></lhs><lhs name\="GreeterEndingStrategy"><rhs name\="Dot"/><rhs name\="Exclamation3"/></lhs><lhs name\="application.Sensor"><rhs name\="application.TemperatureSensor"/><rhs name\="application.AverageSensor"/><rhs name\="application.StandardSensor"/></lhs><lhs name\="application.TemperatureSensor"><rhs name\="application.TemperatureSensor"/></lhs><lhs name\="application.AverageSensor"><rhs name\="application.AverageSensor"/></lhs><lhs name\="java.lang.Iterable"><rhs name\="java.sql.SQLException"/></lhs><lhs name\="java.lang.Exception"><rhs name\="java.sql.SQLException"/></lhs><lhs name\="java.lang.Throwable"><rhs name\="java.sql.SQLException"/></lhs><lhs name\="java.sql.SQLException"><rhs name\="java.sql.SQLException"/></lhs></history>
+/instance/org.eclipse.jdt.ui/content_assist_number_of_computers=12
+/instance/org.eclipse.jdt.ui/content_assist_proposals_background=255,255,255
+/instance/org.eclipse.jdt.ui/content_assist_proposals_foreground=0,0,0
+/instance/org.eclipse.jdt.ui/org.eclipse.jdt.internal.ui.navigator.layout=2
+/instance/org.eclipse.jdt.ui/org.eclipse.jdt.internal.ui.navigator.librariesnode=true
+/instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.formatterprofiles.version=20
+/instance/org.eclipse.jdt.ui/spelling_locale=en_GB
+/instance/org.eclipse.jdt.ui/spelling_locale_initialized=true
+/instance/org.eclipse.jdt.ui/useAnnotationsPrefPage=true
+/instance/org.eclipse.jdt.ui/useQuickDiffPrefPage=true
+/instance/org.eclipse.jsch.core/org.eclipse.jsch.core.hasChangedDefaultWin32SshHome=true
+/instance/org.eclipse.jsch.core/org.eclipse.jsch.core.hasMigratedSsh2Preferences=true
+/instance/org.eclipse.m2e.discovery/org.eclipse.m2e.discovery.pref.projects=
+/instance/org.eclipse.oomph.workingsets/working.set.group=<?xml version\="1.0" encoding\="UTF-8"?>\n<workingsets\:WorkingSetGroup xmi\:version\="2.0" xmlns\:xmi\="http\://www.omg.org/XMI" xmlns\:workingsets\="http\://www.eclipse.org/oomph/workingsets/1.0"/>\n
+/instance/org.eclipse.ui.browser/internalWebBrowserHistory=https\://www.eclipse.org/setups/donate/?scope\=Eclipse%20IDE%20for%20Java%20Developers%20(includes%20Incubating%20components)&version\=4.17.0.20200910-1200&campaign\=2020-06|*|
+/instance/org.eclipse.ui.editors/overviewRuler_migration=migrated_3.1
+/instance/org.eclipse.ui.ide/IMPORT_FILES_AND_FOLDERS_RELATIVE=true
+/instance/org.eclipse.ui.ide/IMPORT_FILES_AND_FOLDERS_TYPE=23,1
+/instance/org.eclipse.ui.ide/PROBLEMS_FILTERS_MIGRATE=true
+/instance/org.eclipse.ui.ide/platformState=1601633367984
+/instance/org.eclipse.ui.ide/quickStart=false
+/instance/org.eclipse.ui.ide/tipsAndTricks=true
+/instance/org.eclipse.ui.navigator/org.eclipse.ui.navigator.ProjectExplorer.filterActivation=\:org.eclipse.jdt.java.ui.filters.HidePackageDeclaration\:org.eclipse.jdt.java.ui.filters.HideOutputFolder\:org.eclipse.buildship.ui.navigator.filter.gradle.subProject\:org.eclipse.ui.navigator.resources.nested.HideTopLevelProjectIfNested\:org.eclipse.buildship.ui.navigator.filter.gradle.buildfolder\:org.eclipse.jdt.java.ui.filters.HideEmptyInnerPackages\:org.eclipse.jdt.java.ui.filters.HideInnerClassFiles\:org.eclipse.ui.navigator.resources.filters.startsWithDot\:org.eclipse.jdt.java.ui.filters.HideEmptyLibraryContainers\:org.eclipse.jdt.java.ui.filters.HideImportDeclaration\:org.eclipse.jdt.java.ui.filters.HideSyntheticMembers\:org.eclipse.ui.navigator.resources.nested.HideFolderWhenProjectIsShownAsNested\:
+/instance/org.eclipse.ui.workbench//org.eclipse.ui.commands/state/org.eclipse.ui.navigator.resources.nested.changeProjectPresentation/org.eclipse.ui.commands.radioState=false
+/instance/org.eclipse.ui.workbench/PLUGINS_NOT_ACTIVATED_ON_STARTUP=;org.eclipse.m2e.discovery;
+/instance/org.eclipse.ui.workbench/org.eclipse.ui.workbench.ACTIVE_NOFOCUS_TAB_BG_END=255,255,255
+/instance/org.eclipse.ui.workbench/org.eclipse.ui.workbench.ACTIVE_NOFOCUS_TAB_BG_START=255,255,255
+/instance/org.eclipse.ui.workbench/org.eclipse.ui.workbench.ACTIVE_NOFOCUS_TAB_TEXT_COLOR=16,16,16
+/instance/org.eclipse.ui.workbench/org.eclipse.ui.workbench.ACTIVE_TAB_BG_END=255,255,255
+/instance/org.eclipse.ui.workbench/org.eclipse.ui.workbench.ACTIVE_TAB_BG_START=255,255,255
+/instance/org.eclipse.ui.workbench/org.eclipse.ui.workbench.INACTIVE_TAB_BG_START=242,242,242
+/instance/org.eclipse.ui/showIntro=false
+/instance/org.eclipse.urischeme/processedSchemes=,eclipse+command,eclipse+mpc
+/instance/org.eclipse.wst.sse.ui/content_assist_number_of_computers=3
+/instance/org.eclipse.wst.sse.ui/useAnnotationsPrefPage=true
+/instance/org.eclipse.wst.sse.ui/useQuickDiffPrefPage=true
+@org.eclipse.core.net=1.3.1000.v20200715-0827
+@org.eclipse.core.resources=3.13.800.v20200706-2152
+@org.eclipse.debug.core=3.16.0.v20200828-0817
+@org.eclipse.debug.ui=3.14.600.v20200828-0817
+@org.eclipse.jdt.core=3.23.0.v20200828-0941
+@org.eclipse.jdt.debug.ui=3.12.0.v20200828-0821
+@org.eclipse.jdt.junit=3.11.900.v20200828-0853
+@org.eclipse.jdt.launching=3.18.0.v20200824-1854
+@org.eclipse.jdt.ui=3.21.200.v20200828-0853
+@org.eclipse.jsch.core=1.3.900.v20200422-1935
+@org.eclipse.m2e.discovery=1.16.0.20200318-1040
+@org.eclipse.oomph.workingsets=1.11.0.v20200624-1156
+@org.eclipse.ui=3.118.0.v20200807-0902
+@org.eclipse.ui.browser=3.6.900.v20200807-1330
+@org.eclipse.ui.editors=3.13.300.v20200812-2334
+@org.eclipse.ui.ide=3.17.200.v20200808-0622
+@org.eclipse.ui.navigator=3.9.400.v20200723-2304
+@org.eclipse.ui.workbench=3.120.0.v20200829-1411
+@org.eclipse.urischeme=1.1.100.v20200729-2048
+@org.eclipse.wst.sse.ui=1.7.100.v202008192217
+file_export_version=3.0
