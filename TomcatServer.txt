@@ -1,3 +1,4 @@
+Server for app deploying:
 Server address: http://zvinfo.eu:8080
 Username: manager
 Password: manager2021++
