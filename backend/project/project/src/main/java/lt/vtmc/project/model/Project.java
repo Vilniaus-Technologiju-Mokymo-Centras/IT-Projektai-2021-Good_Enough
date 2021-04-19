@@ -26,7 +26,6 @@ public class Project {
 	private ProjectStatus projectStatus;
 
 	public Project() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Project(Long id, String projectName, String projectDescription, ProjectStatus projectStatus) {

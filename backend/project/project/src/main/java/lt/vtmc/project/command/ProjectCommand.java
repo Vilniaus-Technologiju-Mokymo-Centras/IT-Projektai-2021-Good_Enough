@@ -13,7 +13,6 @@ public class ProjectCommand {
 	private ProjectStatus projectStatus;
 
 	public ProjectCommand() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public ProjectCommand(String projectName, String projectDescription, ProjectStatus projectStatus) {
