@@ -47,4 +47,15 @@ public class ProjectService {
 
 		return ResponseEntity.ok(project);
 	}
+
+	public ResponseEntity<Project> updateProject(Long id, Project projectForUpdate) {
+		Project project = projectRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Student with id: " + id + " does not exist."));
+		project.setProjectName(projectForUpdate.getProjectName());
+		project.setProjectDescription(projectForUpdate.getProjectDescription());
+		project.setProjectStatus(projectForUpdate.getProjectStatus());
+
+		Project updatedProject = projectRepository.save(project);
+		return ResponseEntity.ok(updatedProject);
+	}
 }
