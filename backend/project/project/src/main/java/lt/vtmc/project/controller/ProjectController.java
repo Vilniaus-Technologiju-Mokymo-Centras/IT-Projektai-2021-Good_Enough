@@ -3,6 +3,7 @@ package lt.vtmc.project.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,4 +43,10 @@ public class ProjectController {
 	public void deleteProject(@PathVariable("id") Long id) {
 		projectService.deleteProject(id);
 	}
+
+	@GetMapping("/projects/{id}")
+	public ResponseEntity<Project> getProjectById(@PathVariable("id") Long id) {
+		return projectService.getProjectById(id);
+	}
+
 }
