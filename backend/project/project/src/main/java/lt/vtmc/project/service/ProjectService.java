@@ -3,10 +3,12 @@ package lt.vtmc.project.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import lt.vtmc.project.command.ProjectCommand;
+import lt.vtmc.project.exceptions.ResourceNotFoundException;
 import lt.vtmc.project.model.Project;
 import lt.vtmc.project.repository.ProjectRepository;
 
@@ -37,5 +39,12 @@ public class ProjectService {
 	public void deleteProject(@PathVariable("id") Long id) {
 		projectRepository.deleteById(id);
 
+	}
+
+	public ResponseEntity<Project> getProjectById(Long id) {
+		Project project = projectRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Student with id: " + id + " does not exist."));
+
+		return ResponseEntity.ok(project);
 	}
 }
