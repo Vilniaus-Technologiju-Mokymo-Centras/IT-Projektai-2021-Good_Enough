@@ -13,7 +13,7 @@ import Container from '@material-ui/core/Container';
 import Modal from '@material-ui/core/Modal'
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import SignUp from '../components/SignUp';
+import Login from '../components/Login';
 
 function Copyright() {
   return (
@@ -123,7 +123,7 @@ export default function SignIn() {
                             }}
                             >
                     <Fade in={open}>
-                        <SignUp/>
+                        <Login/>
               </Fade>
                 </Modal>
             </Grid>
