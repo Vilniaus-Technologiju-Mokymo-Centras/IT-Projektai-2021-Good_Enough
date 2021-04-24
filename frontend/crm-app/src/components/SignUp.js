@@ -44,11 +44,11 @@ export default function SignUp() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign up
+          Registracija
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12}>
               <TextField
                 autoComplete="fname"
                 name="firstName"
@@ -56,19 +56,8 @@ export default function SignUp() {
                 required
                 fullWidth
                 id="firstName"
-                label="First Name"
+                label="Vardas"
                 autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
               />
             </Grid>
             <Grid item xs={12}>
@@ -77,7 +66,7 @@ export default function SignUp() {
                 required
                 fullWidth
                 id="email"
-                label="Email Address"
+                label="El. paštas"
                 name="email"
                 autoComplete="email"
               />
@@ -88,21 +77,9 @@ export default function SignUp() {
                 required
                 fullWidth
                 name="password"
-                label="Password"
+                label="Slaptažodis"
                 type="password"
                 id="password"
-                autoComplete="current-password"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="password2"
-                label="Confirm password"
-                type="password"
-                id="password2"
                 autoComplete="current-password"
               />
             </Grid>
@@ -114,7 +91,7 @@ export default function SignUp() {
             color="primary"
             className={classes.submit}
           >
-            Sign Up
+            Užsiregistruoti
           </Button>
           <Grid container justify="flex-end">
           </Grid>
