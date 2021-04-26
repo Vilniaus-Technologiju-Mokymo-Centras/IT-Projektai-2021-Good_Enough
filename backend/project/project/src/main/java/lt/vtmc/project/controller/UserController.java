@@ -37,12 +37,6 @@ public class UserController {
 		return userService.getAllUsers();
 	}
 
-//  default uzrasas paziureti ar viskas veikia
-	@GetMapping("/hello")
-	public String getHello() {
-		return "Hello World";
-	}
-
 	@PostMapping("/user")
 	public void createProject(@RequestBody UserCommand user) {
 		userService.createUser(user);
