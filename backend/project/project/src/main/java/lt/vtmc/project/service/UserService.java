@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import lt.vtmc.project.model.User;
 
@@ -27,11 +26,6 @@ public class UserService implements UserDetailsService {
 
 	public List<User> getAllUsers() {
 		return userRepository.findAll();
-
-	}
-
-	public void deleteUser(@PathVariable("id") Long id) {
-		userRepository.deleteById(id);
 
 	}
 
