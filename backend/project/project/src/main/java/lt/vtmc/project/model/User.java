@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 @Entity
 @Table(name = "Users")
 public class User {
@@ -29,7 +31,7 @@ public class User {
 		this.id = id;
 		this.userName = userName;
 		this.userEmail = userEmail;
-		this.userPassword = userPassword;
+		this.userPassword = new BCryptPasswordEncoder().encode(userPassword);
 	}
 
 	public Long getId() {
