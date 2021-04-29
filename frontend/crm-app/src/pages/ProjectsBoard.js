@@ -1,4 +1,5 @@
 import React, { useState, useEffect }from 'react';
+import { useHistory } from"react-router-dom";
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -116,6 +117,13 @@ export default function MiniDrawer() {
     });
   }, [url]);
 
+  const history = useHistory();
+  const logout = () => {
+   
+    axios.post("http://localhost:8080/logout").then((resp) => {
+    //jei saugojot kazkur userio info, is ten reikia istrint
+    history.push('/');})
+  };
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -186,7 +194,7 @@ export default function MiniDrawer() {
         </List>
         <Divider />
           <List>
-            <ListItem button onClick={() => { alert('Atsijungėte') }}>
+            <ListItem button onClick={  logout }>
               <ListItemIcon><PowerSettingsNewIcon /></ListItemIcon>
               <ListItemText primary={"Atsijungti"}></ListItemText>
             </ListItem>
