@@ -4,9 +4,11 @@ import SignIn from "./pages/SignIn";
 import ProjectsBoard from "./pages/ProjectsBoard";
 import StatusBoard from "./pages/StatusBoard";
 import TasksBoard from "./pages/TasksBoard";
+import axios from 'axios';
 
 export default function App() {
   document.title = 'crm-app';
+  axios.defaults.withCredentials = true;
  
   return (
     <div>
