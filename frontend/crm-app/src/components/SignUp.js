@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState,  useContext, AuthContext }from 'react';
+import { useHistory } from"react-router-dom";
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -8,6 +9,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -35,6 +37,31 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
   const classes = useStyles();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const history = useHistory();
+  const authContext = useContext(AuthContext);
+
+
+  const handleLogin =(e) => {
+    e.preventDefault();
+    let userData = new URLSearchParams();
+    userData.append("username", email);
+    userData.append("password", password);
+    axios
+      .post(`http://localhost:8080/login`, userData, {
+        headers: { "Content-type": "application/x-www-form-urlencoded" },
+      })
+      .then((resp) => { 
+        // resp.data turetu grizti jusu userio info, kuria kolkas isvedam i konsole
+        //ja reiktu kazkur issaugot (gal pradiai i localstorage?)
+        // (siulau i pasiaiskint pvz. apie Context)
+        // authContext.setUser(resp.data);
+        console.log(`resp.data`, resp.data)
+        history.push("/projects");
+      })
+     .catch((err) => {console.log(`error!!!!!!!!`,err)})
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -46,7 +73,7 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Registracija
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={handleLogin}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
@@ -58,6 +85,7 @@ export default function SignUp() {
                 id="firstName"
                 label="Vardas"
                 autoFocus
+                onChange={e => setEmail(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -81,6 +109,7 @@ export default function SignUp() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={e => setPassword(e.target.value)}
               />
             </Grid>
           </Grid>

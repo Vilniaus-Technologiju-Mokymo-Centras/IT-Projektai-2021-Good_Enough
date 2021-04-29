@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState }from 'react';
+import { useHistory } from"react-router-dom";
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -14,6 +15,7 @@ import Modal from '@material-ui/core/Modal'
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import Login from '../components/Login';
+import axios from 'axios';
 
 function Copyright() {
   return (
@@ -51,6 +53,31 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
   const classes = useStyles();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const history = useHistory();
+  
+
+
+  const handleLogin =(e) => {
+    e.preventDefault();
+    let userData = new URLSearchParams();
+    userData.append("username", email);
+    userData.append("password", password);
+    axios
+      .post(`http://localhost:8080/login`, userData, {
+        headers: { "Content-type": "application/x-www-form-urlencoded" },
+      })
+      .then((resp) => { 
+        // resp.data turetu grizti jusu userio info, kuria kolkas isvedam i konsole
+        //ja reiktu kazkur issaugot (gal pradiai i localstorage?)
+        // (siulau i pasiaiskint pvz. apie Context)
+        // authContext.setUser(resp.data);
+        console.log(`resp.data`, resp.data)
+        history.push("/projects");
+      })
+     .catch((err) => {console.log(`error!!!!!!!!`,err)})
+  }
 
   const [open, setOpen] = React.useState(false);
 
@@ -73,7 +100,7 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Prisijungti
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={handleLogin}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -84,6 +111,7 @@ export default function SignIn() {
             name="email"
             autoComplete="email"
             autoFocus
+            onChange={e => setEmail(e.target.value)}
           />
           <TextField
             variant="outlined"
@@ -95,6 +123,7 @@ export default function SignIn() {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={e => setPassword(e.target.value)}
           />
           <Button
             type="submit"
