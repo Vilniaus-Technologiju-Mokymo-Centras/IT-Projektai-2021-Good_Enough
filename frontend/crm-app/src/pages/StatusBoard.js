@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from"react-router-dom";
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -19,6 +20,7 @@ import TotalCards from '../components/TotalCards';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import ListAltIcon from '@material-ui/icons/ListAlt';
 import TimelapseIcon from '@material-ui/icons/Timelapse';
+import axios from "axios";
 
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import { Link } from 'react-router-dom';
@@ -103,7 +105,13 @@ export default function MiniDrawer() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
+const history = useHistory();
+  const logout = () => {
+   
+    axios.post("http://localhost:8080/logout").then((resp) => {
+    //jei saugojot kazkur userio info, is ten reikia istrint
+    history.push('/');})
+  };
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -174,7 +182,7 @@ export default function MiniDrawer() {
         </List>
         <Divider />
             <List>
-                <ListItem button onClick={() => { alert('Atsijungėte') }}>
+                <ListItem button onClick={  logout }>
                     <ListItemIcon><PowerSettingsNewIcon /></ListItemIcon>
                     <ListItemText primary={"Atsijungti"}></ListItemText>
                 </ListItem>
