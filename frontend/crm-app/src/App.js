@@ -4,11 +4,14 @@ import SignIn from "./pages/SignIn";
 import ProjectsBoard from "./pages/ProjectsBoard";
 import StatusBoard from "./pages/StatusBoard";
 import TasksBoard from "./pages/TasksBoard";
-import axios from 'axios';
+import CreateProjectComponent from './components/CreateProjectComponent';
+import ViewProjectComponent from './components/ViewProjectComponent';
+
+//import axios from 'axios';
 
 export default function App() {
   document.title = 'crm-app';
-  axios.defaults.withCredentials = true;
+  //axios.defaults.withCredentials = true;
  
   return (
     <div>
@@ -16,15 +19,18 @@ export default function App() {
           <Route exact from="/">
             <SignIn />
           </Route>
-          <Route exact path="/projects">
+          <Route exact path="/api/projects">
             <ProjectsBoard /> 
           </Route>
-          <Route exact path="/status">
+          <Route exact path="/api/status">
             <StatusBoard />
           </Route>
-          <Route exact path="/tasks">
+          <Route exact path="/api/tasks">
             <TasksBoard />
-          </Route>  
+        </Route>
+        <Route path = "/api/add-project/:id" component = {CreateProjectComponent}></Route>
+        <Route path = "/api/view-project/:id" component = {ViewProjectComponent}></Route>
+
       </Switch>
     </div>
   );

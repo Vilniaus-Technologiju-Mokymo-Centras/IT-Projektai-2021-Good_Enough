@@ -1,4 +1,4 @@
-import React, { useState,  useContext, AuthContext }from 'react';
+import React, { useState }from 'react';
 import { useHistory } from"react-router-dom";
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -40,7 +40,7 @@ export default function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const history = useHistory();
-  const authContext = useContext(AuthContext);
+
 
 
   const handleLogin =(e) => {

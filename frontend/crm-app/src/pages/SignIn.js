@@ -74,7 +74,7 @@ export default function SignIn() {
         // (siulau i pasiaiskint pvz. apie Context)
         // authContext.setUser(resp.data);
         console.log(`resp.data`, resp.data)
-        history.push("/projects");
+        history.push("/api/projects");
       })
      .catch((err) => {console.log(`error!!!!!!!!`,err)})
   }

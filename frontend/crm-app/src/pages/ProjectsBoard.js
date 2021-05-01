@@ -1,4 +1,4 @@
-import React, { useState, useEffect }from 'react';
+import React from 'react';
 import { useHistory } from"react-router-dom";
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -16,15 +16,15 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import Projects from '../components/Projects';
+import Projects from '../components/ListProjectsComponent';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import ListAltIcon from '@material-ui/icons/ListAlt';
 import TimelapseIcon from '@material-ui/icons/Timelapse';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import { Link } from 'react-router-dom';
-import AddIcon from '@material-ui/icons/Add';
-import Fab from '@material-ui/core/Fab';
-import Tooltip from '@material-ui/core/Tooltip';
+// import AddIcon from '@material-ui/icons/Add';
+// import Fab from '@material-ui/core/Fab';
+// import Tooltip from '@material-ui/core/Tooltip';
 import axios from "axios";
 
 const drawerWidth = 240;
@@ -107,15 +107,6 @@ export default function MiniDrawer() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
-  const url = `https://60570137055dbd0017e84567.mockapi.io/grid/Books`;
-  const [project, setProject] = useState([]);
-  
-  useEffect(() => {
-    axios.get(url).then((response) => {
-      setProject(response.data);
-    });
-  }, [url]);
 
   const history = useHistory();
   const logout = () => {
@@ -205,15 +196,13 @@ export default function MiniDrawer() {
         {/* <div>
           <TotalCards/>
         </div> */}
-        <br />
-      <Tooltip title="Pridėti projektą" aria-label="add">
+  
+      {/* <Tooltip title="Pridėti projektą" aria-label="add">
         <Fab color="primary">
           <AddIcon />
         </Fab>
-      </Tooltip>
-        <br />
-         <br />
-        <Projects projectsData={project} key={project.id} />
+      </Tooltip> */}
+        <Projects/>
         <br/>
       </main>
     </div>
