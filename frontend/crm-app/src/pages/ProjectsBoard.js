@@ -16,7 +16,8 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import Projects from '../components/ListProjectsComponent';
+import Projects from '../components/Projects';
+import AddProject from '../components/AddProject';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import ListAltIcon from '@material-ui/icons/ListAlt';
 import TimelapseIcon from '@material-ui/icons/Timelapse';
@@ -202,6 +203,7 @@ export default function MiniDrawer() {
           <AddIcon />
         </Fab>
       </Tooltip> */}
+        <AddProject/>
         <Projects/>
         <br/>
       </main>

@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Collapse from '@material-ui/core/Collapse';
@@ -14,6 +14,11 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import Button from '@material-ui/core/Button'
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
+import Tooltip from '@material-ui/core/Tooltip';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
 const useRowStyles = makeStyles({
   root: {
@@ -25,17 +30,16 @@ const useRowStyles = makeStyles({
 
 
 
-function createData(name, calories, fat, carbs, protein, price) {
+function createData(id, title, description, status, totalTasks, actions) {
   return {
-    name,
-    calories,
-    fat,
-    carbs,
-    protein,
-    price,
-    history: [
-      { date: '2020-01-05', customerId: '11091700', amount: 3 },
-      { date: '2020-01-02', customerId: 'Anonymous', amount: 1 },
+    id,
+    title,
+    description,
+    status,
+    totalTasks,
+    actions, 
+    tasks: [
+      { taskId: '2020-01-05', taskTitle: '11091700', taskDesc: 3, taskPriority: 'low', taskStatus: 'TO DO' },
     ],
   };
 }
@@ -54,15 +58,20 @@ function Row(props) {
           </IconButton>
         </TableCell>
         <TableCell component="th" scope="row">
-          {row.name}
+          {row.id}
         </TableCell>
-        <TableCell>{row.calories}</TableCell>
-        <TableCell>{row.fat}</TableCell>
-        <TableCell>{row.carbs}</TableCell>
-        <TableCell>{row.protein}</TableCell>
+        <TableCell>{row.title}</TableCell>
+        <TableCell>{row.description}</TableCell>
+        <TableCell>{row.status}</TableCell>
+        <TableCell>{row.TotalTasks}</TableCell>
+        <TableCell>
+          <Button variant="contained" color="primary">Redaguoti</Button>
+          <span> </span>
+          <Button variant="contained" color="secondary">Ištrinti</Button>
+        </TableCell>
       </TableRow>
       <TableRow>
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={8}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box margin={1}>
               <Typography variant="h6" gutterBottom component="div">
@@ -76,20 +85,36 @@ function Row(props) {
                     <TableCell>Aprašymas</TableCell>
                     <TableCell>Prioritetas</TableCell>
                     <TableCell>Būsena</TableCell>
-                    <TableCell>Sukurta</TableCell>
-                     <TableCell>Atnaujinta</TableCell>
+                    <TableCell>Veiksmai</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {row.history.map((historyRow) => (
-                    <TableRow key={historyRow.date}>
-                      <TableCell component="th" scope="row">{historyRow.date}</TableCell>
-                      <TableCell>{historyRow.customerId}</TableCell>
-                      <TableCell>{historyRow.amount}</TableCell>
-                      <TableCell>{historyRow.amount}</TableCell>
-                      <TableCell>{historyRow.amount}</TableCell>
-                       <TableCell>{historyRow.amount}</TableCell>
-                      <TableCell>{Math.round(historyRow.amount * row.price * 100) / 100}</TableCell>
+                  {row.tasks.map((tasksRow) => (
+                    <TableRow key={tasksRow.taskId}>
+                      <TableCell component="th" scope="row">{tasksRow.taskId}</TableCell>
+                      <TableCell>{tasksRow.taskTitle}</TableCell>
+                      <TableCell>{tasksRow.taskDesc}</TableCell>
+                      <TableCell>{tasksRow.taskPriority}</TableCell>
+                      <TableCell>{tasksRow.taskStatus}</TableCell>
+                      <TableCell>
+                        <span> </span>
+                        <Tooltip title="add">
+                          <IconButton aria-label="add">
+                            <AddCircleOutlineIcon />
+                          </IconButton>
+                        </Tooltip>
+                        <Tooltip title="Edit">
+                          <IconButton aria-label="edit" color="primary">
+                           <EditIcon/>
+                          </IconButton>
+                        </Tooltip>
+                        <span> </span>
+                        <Tooltip title="Delete">
+                          <IconButton aria-label="delete" color="secondary">
+                            <DeleteIcon />
+                          </IconButton>
+                        </Tooltip>
+                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -102,23 +127,22 @@ function Row(props) {
   );
 }
 
-Row.propTypes = {
-  row: PropTypes.shape({
-    calories: PropTypes.number.isRequired,
-    carbs: PropTypes.number.isRequired,
-    fat: PropTypes.number.isRequired,
-    history: PropTypes.arrayOf(
-      PropTypes.shape({
-        amount: PropTypes.number.isRequired,
-        customerId: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
-      }),
-    ).isRequired,
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    protein: PropTypes.number.isRequired,
-  }).isRequired,
-};
+// Row.propTypes = {
+//   row: PropTypes.shape({
+//     title: PropTypes.number.isRequired,
+//     status: PropTypes.number.isRequired,
+//     description: PropTypes.number.isRequired,
+//     history: PropTypes.arrayOf(
+//       PropTypes.shape({
+//         amount: PropTypes.number.isRequired,
+//         customerId: PropTypes.string.isRequired,
+//         date: PropTypes.string.isRequired,
+//       }),
+//     ).isRequired,
+//     id: PropTypes.string.isRequired,
+//     totalTasks: PropTypes.number.isRequired,
+//   }).isRequired,
+// };
 
 const rows = [
   createData('Frozen yoghurt', 159, 6.0, 24, 4.0, 3.99),
@@ -127,6 +151,10 @@ const rows = [
   createData('Cupcake', 305, 3.7, 67, 4.3, 2.5),
   createData('Gingerbread', 356, 16.0, 49, 3.9, 1.5),
 ];
+
+// const rows = [
+//   createData()
+// ]
 
 export default function CollapsibleTable() {
   return (
@@ -138,13 +166,14 @@ export default function CollapsibleTable() {
             <TableCell>Pavadinimas</TableCell>
             <TableCell>Aprašymas</TableCell>
             <TableCell>Būsena</TableCell>
-            <TableCell>Užduočių kiekis</TableCell>
-            <TableCell>Neatliktų užduočių kiekis</TableCell>
+            <TableCell>Užduotys</TableCell>
+            <TableCell>Užduotys</TableCell>
+            <TableCell>Veiksmai</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <Row key={row.name} row={row} />
+            <Row key={row.id} row={row} />
           ))}
         </TableBody>
       </Table>

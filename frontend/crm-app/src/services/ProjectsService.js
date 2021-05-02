@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const PROJECTS_API_BASE_URL = "http://localhost:8080/api/projects";
-//const PROJECTS_API_BASE_URL = "https://60570137055dbd0017e84567.mockapi.io/grid/Books";
+//const PROJECTS_API_BASE_URL = "http://localhost:8080/api/projects";
+const PROJECTS_API_BASE_URL = "https://60570137055dbd0017e84567.mockapi.io/grid/Books";
 
 class ProjectsService {
 
