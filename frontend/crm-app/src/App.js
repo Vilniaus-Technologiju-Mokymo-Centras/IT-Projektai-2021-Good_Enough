@@ -17,7 +17,7 @@ export default function App() {
           <Route exact from="/">
             <SignIn />
           </Route>
-          <Route exact path="/projects">
+          <Route exact path="/api/projects">
             <ProjectsBoard /> 
           </Route>
           <Route exact path="/status">
