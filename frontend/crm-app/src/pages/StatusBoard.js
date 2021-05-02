@@ -161,7 +161,7 @@ const history = useHistory();
         </div>
         <Divider />
         <List>
-          <Link to="/projects" className={classes.link}>
+          <Link to="/api/projects" className={classes.link}>
             <ListItem button>
               <ListItemIcon><DashboardIcon /></ListItemIcon>
             <ListItemText primary={"Projektai"}></ListItemText>
