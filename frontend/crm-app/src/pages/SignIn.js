@@ -3,7 +3,7 @@ import { useHistory } from"react-router-dom";
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
+//import TextField from '@material-ui/core/TextField';
 // import Link from '@material-ui/core/Link';
 // import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
@@ -16,6 +16,7 @@ import Container from '@material-ui/core/Container';
 // import Fade from '@material-ui/core/Fade';
 // import Login from '../components/Login';
 import axios from 'axios';
+import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 
 function Copyright() {
   return (
@@ -55,28 +56,29 @@ export default function SignIn() {
   const classes = useStyles();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const history = useHistory();
-  
 
+    
+  const history = useHistory();
 
   const handleLogin =(e) => {
     e.preventDefault();
-    let userData = new URLSearchParams();
-    userData.append("username", email);
-    userData.append("password", password);
-    axios
-      .post(`http://localhost:8080/login`, userData, {
-        headers: { "Content-type": "application/x-www-form-urlencoded" },
-      })
-      .then((resp) => { 
-        // resp.data turetu grizti jusu userio info, kuria kolkas isvedam i konsole
-        //ja reiktu kazkur issaugot (gal pradiai i localstorage?)
-        // (siulau i pasiaiskint pvz. apie Context)
-        // authContext.setUser(resp.data);
-        console.log(`resp.data`, resp.data)
-        history.push("/api/projects");
-      })
-     .catch((err) => {console.log(`error!!!!!!!!`,err)})
+        let userData = new URLSearchParams();
+        userData.append("username", email);
+        userData.append("password", password);
+        axios
+          .post(`http://localhost:8080/login`, userData, {
+              headers: { "Content-type": "application/x-www-form-urlencoded" },
+          })
+          .then((resp) => {
+              // resp.data turetu grizti jusu userio info, kuria kolkas isvedam i konsole
+              //ja reiktu kazkur issaugot (gal pradiai i localstorage?)
+              // (siulau i pasiaiskint pvz. apie Context)
+              // authContext.setUser(resp.data);
+              console.log(`resp.data`, resp.data)
+              history.push("/api/projects");
+          })
+          .catch((err) => { console.log(`error!!!!!!!!`, err) })
+      
   }
 
   // const [open, setOpen] = React.useState(false);
@@ -100,11 +102,10 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Prisijungti
         </Typography>
-        <form className={classes.form} noValidate onSubmit={handleLogin}>
-          <TextField
+        <ValidatorForm className={classes.form} onSubmit={handleLogin}>
+          <TextValidator
             variant="outlined"
             margin="normal"
-            required
             fullWidth
             id="email"
             label="El. paštas"
@@ -112,11 +113,13 @@ export default function SignIn() {
             autoComplete="email"
             autoFocus
             onChange={e => setEmail(e.target.value)}
+            value={email}
+            validators={['required', 'isEmail']}
+            errorMessages={['Privalomas laukas', 'Įveskite el. paštą']}               
           />
-          <TextField
+          <TextValidator
             variant="outlined"
             margin="normal"
-            required
             fullWidth
             name="password"
             label="Slaptažodis"
@@ -124,6 +127,9 @@ export default function SignIn() {
             id="password"
             autoComplete="current-password"
             onChange={e => setPassword(e.target.value)}
+            value={password}
+            validators={['required']}
+            errorMessages={['Privalomas laukas']}        
           />
           <Button
             type="submit"
@@ -157,7 +163,7 @@ export default function SignIn() {
                 </Modal>
             </Grid>
           </Grid> */}
-        </form>
+        </ValidatorForm>
       </div>
       <Box mt={8}>
         <Copyright />
