@@ -3,8 +3,11 @@ package lt.vtmc.project.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,4 +42,15 @@ public class TaskController {
 		taskService.createTask(task);
 	}
 
+	@DeleteMapping("/tasks/{id}")
+	@ApiOperation(value = "Delete a task", notes = "Deletes a task by id.")
+	public void deleteTask(@PathVariable("id") Long id) {
+		taskService.deleteTask(id);
+	}
+
+	@GetMapping("/tasks/{id}")
+	@ApiOperation(value = "Get a task", notes = "Returns a task by id.")
+	public ResponseEntity<Task> getTaskById(@PathVariable("id") Long id) {
+		return taskService.getTaskById(id);
+	}
 }
