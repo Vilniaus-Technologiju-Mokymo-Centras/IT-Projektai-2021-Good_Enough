@@ -1,65 +1,38 @@
-package lt.vtmc.project.model;
+package lt.vtmc.project.command;
 
 import java.time.LocalDateTime;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
-import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.stereotype.Component;
 
-@Entity
-@Component
-@Table(name = "tasks")
-public class Task {
+import lt.vtmc.project.model.TaskPriority;
+import lt.vtmc.project.model.TaskStatus;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "task_id")
-	private Long id;
-	@Column(name = "task_name")
+public class TaskCommand {
+
 	private String taskName;
-	@Column(name = "task_description")
 	private String taskDescription;
 	@Enumerated(EnumType.STRING)
-	@Column(name = "task_priority")
 	private TaskPriority taskPriority;
 	@Enumerated(EnumType.STRING)
-	@Column(name = "task_status")
 	private TaskStatus taskStatus;
-	@Column(updatable = false)
-	@CreationTimestamp
 	private LocalDateTime taskCreated;
 	@UpdateTimestamp
 	private LocalDateTime taskModified = LocalDateTime.now();
 
-	public Task() {
+	public TaskCommand() {
 	}
 
-	public Task(Long id, String taskName, String taskDescription, TaskPriority taskPriority, TaskStatus taskStatus,
+	public TaskCommand(String taskName, String taskDescription, TaskPriority taskPriority, TaskStatus taskStatus,
 			LocalDateTime taskCreated, LocalDateTime taskModified) {
-		this.id = id;
 		this.taskName = taskName;
 		this.taskDescription = taskDescription;
 		this.taskPriority = taskPriority;
 		this.taskStatus = taskStatus;
 		this.taskCreated = taskCreated;
 		this.taskModified = taskModified;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getTaskName() {
@@ -112,8 +85,9 @@ public class Task {
 
 	@Override
 	public String toString() {
-		return "Task [id=" + id + ", taskName=" + taskName + ", taskDescription=" + taskDescription + ", taskPriority="
-				+ taskPriority + ", taskStatus=" + taskStatus + "]";
+		return "TaskCommand [taskName=" + taskName + ", taskDescription=" + taskDescription + ", taskPriority="
+				+ taskPriority + ", taskStatus=" + taskStatus + ", taskCreated=" + taskCreated + ", taskModified="
+				+ taskModified + "]";
 	}
 
 }
