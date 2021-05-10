@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 //import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
@@ -19,6 +19,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Tooltip from '@material-ui/core/Tooltip';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import axios from 'axios';
 
 const useRowStyles = makeStyles({
   root: {
@@ -157,6 +158,17 @@ const rows = [
 // ]
 
 export default function CollapsibleTable() {
+
+  const[projects, setProjects] = React.useState([]);
+
+  const getProjects = () => {
+    axios.get("http://localhost:8080/api/projects").then((response) =>{setProjects(response.Data);
+  });
+  }
+
+  useEffect(() => {
+    getProjects();
+  },[])
   return (
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
@@ -172,8 +184,8 @@ export default function CollapsibleTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <Row key={row.id} row={row} />
+          {projects&&projects.map((p) => (
+            <Row key={p.id} row={p} />
           ))}
         </TableBody>
       </Table>
