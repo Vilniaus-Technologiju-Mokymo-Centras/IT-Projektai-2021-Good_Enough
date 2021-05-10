@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import lt.vtmc.project.command.TaskCommand;
 import lt.vtmc.project.model.Task;
@@ -30,6 +31,11 @@ public class TaskService {
 		task.setTaskPriority(createdTask.getTaskPriority());
 		task.setTaskStatus(createdTask.getTaskStatus());
 		taskRepository.save(task);
+
+	}
+
+	public void deleteTask(@PathVariable("id") Long id) {
+		taskRepository.deleteById(id);
 
 	}
 
