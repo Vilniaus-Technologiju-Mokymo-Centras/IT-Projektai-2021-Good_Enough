@@ -48,4 +48,16 @@ public class TaskService {
 		return ResponseEntity.ok(task);
 	}
 
+	public ResponseEntity<Task> updateTask(Long id, Task taskForUpdate) {
+		Task task = taskRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Project with id: " + id + " does not exist."));
+		task.setTaskName(taskForUpdate.getTaskName());
+		task.setTaskDescription(taskForUpdate.getTaskDescription());
+		task.setTaskPriority(taskForUpdate.getTaskPriority());
+		task.setTaskStatus(taskForUpdate.getTaskStatus());
+
+		Task updatedTask = taskRepository.save(task);
+		return ResponseEntity.ok(updatedTask);
+	}
+
 }
