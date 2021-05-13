@@ -22,17 +22,17 @@ public class Task {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "task_id")
+	@Column(name = "id")
 	private Long id;
 	@Column(name = "task_name")
 	private String taskName;
-	@Column(name = "task_description")
+	@Column(name = "description")
 	private String taskDescription;
 	@Enumerated(EnumType.STRING)
-	@Column(name = "task_priority")
+	@Column(name = "priority")
 	private TaskPriority taskPriority;
 	@Enumerated(EnumType.STRING)
-	@Column(name = "task_status")
+	@Column(name = "status")
 	private TaskStatus taskStatus;
 	@Column(updatable = false)
 	@CreationTimestamp

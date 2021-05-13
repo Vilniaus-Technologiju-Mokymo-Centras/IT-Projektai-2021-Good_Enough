@@ -29,7 +29,7 @@ public class InitData implements CommandLineRunner {
 		User u = new User();
 		u.setUserName("adminas");
 		u.setUserEmail("admin@mail.com");
-		u.setUserPassword(enc.encode("password"));
+		u.setUserPassword(enc.encode("Password!1"));
 		repo.save(u);
 		for (int i = 1; i < 6; i++) {
 			ProjectCommand pc = new ProjectCommand();

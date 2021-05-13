@@ -8,18 +8,18 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Users")
+@Table(name = "uers")
 public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "vartotojo_id")
+	@Column(name = "id")
 	private Long id;
-	@Column(name = "vartotojo_pavadinimas")
+	@Column(name = "user_name")
 	private String userName;
-	@Column(name = "vartotojo_pastas")
+	@Column(name = "email")
 	private String userEmail;
-	@Column(name = "vartotojo_slaptazodis")
+	@Column(name = "password")
 	private String userPassword;
 
 	public User() {
