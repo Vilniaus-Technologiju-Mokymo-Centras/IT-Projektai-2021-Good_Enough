@@ -10,19 +10,19 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Projects")
+@Table(name = "projects")
 public class Project {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "projekto_id")
+	@Column(name = "id")
 	private Long id;
-	@Column(name = "projekto_pavadinimas")
+	@Column(name = "project_name")
 	private String projectName;
-	@Column(name = "projekto_aprasymas")
+	@Column(name = "description")
 	private String projectDescription;
 	@Enumerated(EnumType.STRING)
-	@Column(name = "projekto_busena")
+	@Column(name = "project_status")
 	private ProjectStatus projectStatus;
 
 	public Project() {
