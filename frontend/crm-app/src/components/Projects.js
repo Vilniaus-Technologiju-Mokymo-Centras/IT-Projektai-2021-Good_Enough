@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 //import PropTypes from 'prop-types';
+import ProjectsService from '../services/ProjectsService';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Collapse from '@material-ui/core/Collapse';
@@ -19,8 +20,6 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Tooltip from '@material-ui/core/Tooltip';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import axios from 'axios';
-
 const useRowStyles = makeStyles({
   root: {
     '& > *': {
@@ -28,28 +27,23 @@ const useRowStyles = makeStyles({
     },
   },
 });
-
-
-
-function createData(id, title, description, status, totalTasks, actions) {
-  return {
-    id,
-    title,
-    description,
-    status,
-    totalTasks,
-    actions, 
-    tasks: [
-      { taskId: '2020-01-05', taskTitle: '11091700', taskDesc: 3, taskPriority: 'low', taskStatus: 'TO DO' },
-    ],
-  };
-}
-
+// function createData(id, title, description, status, totalTasks, actions) {
+//   return {
+//     id,
+//     title,
+//     description,
+//     status,
+//     totalTasks,
+//     actions, 
+//     tasks: [
+//       { taskId: '2020-01-05', taskTitle: '11091700', taskDesc: 3, taskPriority: 'low', taskStatus: 'TO DO' },
+//     ],
+//   };
+// }
 function Row(props) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
   const classes = useRowStyles();
-
   return (
     <React.Fragment>
       <TableRow className={classes.root}>
@@ -59,11 +53,11 @@ function Row(props) {
           </IconButton>
         </TableCell>
         <TableCell component="th" scope="row">
-          {row.id}
+          {row.projectName}
         </TableCell>
-        <TableCell>{row.title}</TableCell>
-        <TableCell>{row.description}</TableCell>
-        <TableCell>{row.status}</TableCell>
+        <TableCell>{row.projectDescription}</TableCell>
+        <TableCell>{row.projectStatus}</TableCell>
+        <TableCell>{row.pro}</TableCell>
         <TableCell>{row.TotalTasks}</TableCell>
         <TableCell>
           <Button variant="contained" color="primary">Redaguoti</Button>
@@ -90,7 +84,7 @@ function Row(props) {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {row.tasks.map((tasksRow) => (
+                  {row.tasks&&row.tasks.map((tasksRow) => (
                     <TableRow key={tasksRow.taskId}>
                       <TableCell component="th" scope="row">{tasksRow.taskId}</TableCell>
                       <TableCell>{tasksRow.taskTitle}</TableCell>
@@ -127,7 +121,6 @@ function Row(props) {
     </React.Fragment>
   );
 }
-
 // Row.propTypes = {
 //   row: PropTypes.shape({
 //     title: PropTypes.number.isRequired,
@@ -144,31 +137,34 @@ function Row(props) {
 //     totalTasks: PropTypes.number.isRequired,
 //   }).isRequired,
 // };
-
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0, 3.99),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3, 4.99),
-  createData('Eclair', 262, 16.0, 24, 6.0, 3.79),
-  createData('Cupcake', 305, 3.7, 67, 4.3, 2.5),
-  createData('Gingerbread', 356, 16.0, 49, 3.9, 1.5),
-];
-
+// const projects = [
+//   createData('Frozenn yoghurt', 159, 6.0, 24, 4.0, 3.99),
+//   createData('Ice cream sandwich', 237, 9.0, 37, 4.3, 4.99),
+//   createData('Eclair', 262, 16.0, 24, 6.0, 3.79),
+//   createData('Cupcake', 305, 3.7, 67, 4.3, 2.5),
+//   createData('Gingerbread', 356, 16.0, 49, 3.9, 1.5),
+// ];
 // const rows = [
 //   createData()
 // ]
-
 export default function CollapsibleTable() {
-
-  const[projects, setProjects] = React.useState([]);
-
-  const getProjects = () => {
-    axios.get("http://localhost:8080/api/projects").then((response) =>{setProjects(response.Data);
-  });
-  }
-
+  const [projects, setProjects] = useState([]);
+  const retrieveProjects = () => {
+    // axios.get("http://localhost:8080/api/projects")
+    //   .then(response => {
+    //     console.log(`response`, response)
+    //     setProjects(response.data);
+       
+    //   })
+    ProjectsService.getProjects().then(response=>setProjects(response.data))
+      .catch(e => {
+        console.log(e);
+      });
+  };
   useEffect(() => {
-    getProjects();
-  },[])
+   
+    retrieveProjects();
+  }, []);
   return (
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
@@ -184,7 +180,7 @@ export default function CollapsibleTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {projects&&projects.map((p) => (
+        {projects&&projects.map((p) => (
             <Row key={p.id} row={p} />
           ))}
         </TableBody>
