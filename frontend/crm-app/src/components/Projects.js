@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 //import PropTypes from 'prop-types';
 import ProjectsService from '../services/ProjectsService';
 import { makeStyles } from '@material-ui/core/styles';
+import axios from "axios";
 import Box from '@material-ui/core/Box';
 import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
@@ -20,6 +21,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Tooltip from '@material-ui/core/Tooltip';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import { GridColumnsToolbarButton } from '@material-ui/data-grid';
 const useRowStyles = makeStyles({
   root: {
     '& > *': {
@@ -44,6 +46,26 @@ function Row(props) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
   const classes = useRowStyles();
+  const [tasks, setTasks] = React.useState([]);
+
+  const getTasks =() => {
+    const id = row.id;
+    axios.get("http://localhost:8080/api/projects/"+id+"/tasks").then((response) =>{console.log(response.data);
+  });
+}
+useEffect(() => {
+   
+  getTasks();
+}, [])
+
+  const deleteProject = (id) => {
+    axios.delete("http://localhost:8080/api/projects/"+id).then((response) =>{props.getProjects();
+  });
+  }
+  // const editProject = (id) => {
+  //   axios.put("http://localhost:8080/api/projects/"+id).then((response) =>{props.getProjects();
+  // });
+  // }
   return (
     <React.Fragment>
       <TableRow className={classes.root}>
@@ -62,7 +84,7 @@ function Row(props) {
         <TableCell>
           <Button variant="contained" color="primary">Redaguoti</Button>
           <span> </span>
-          <Button variant="contained" color="secondary">Ištrinti</Button>
+          <Button variant="contained" color="secondary" onClick={() => deleteProject(row.id)}>Ištrinti</Button>
         </TableCell>
       </TableRow>
       <TableRow>
@@ -148,23 +170,25 @@ function Row(props) {
 //   createData()
 // ]
 export default function CollapsibleTable() {
-  const [projects, setProjects] = useState([]);
-  const retrieveProjects = () => {
-    // axios.get("http://localhost:8080/api/projects")
-    //   .then(response => {
-    //     console.log(`response`, response)
-    //     setProjects(response.data);
+  const [projects, setProjects] = React.useState([]);
+  const getProjects = () => {
+    axios.get("http://localhost:8080/api/projects")
+      .then(response => {
+        console.log(`response`, response)
+        setProjects(response.data);
        
-    //   })
-    ProjectsService.getProjects().then(response=>setProjects(response.data))
-      .catch(e => {
-        console.log(e);
       });
-  };
+    }
+  //   ProjectsService.getProjects().then(response=>setProjects(response.data))
+  //     .catch(e => {
+  //       console.log(e);
+  //     });
+  // };
   useEffect(() => {
    
-    retrieveProjects();
+    getProjects();
   }, []);
+
   return (
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
@@ -181,7 +205,7 @@ export default function CollapsibleTable() {
         </TableHead>
         <TableBody>
         {projects&&projects.map((p) => (
-            <Row key={p.id} row={p} />
+            <Row key={p.id} row={p} getProjects={getProjects} />
           ))}
         </TableBody>
       </Table>
