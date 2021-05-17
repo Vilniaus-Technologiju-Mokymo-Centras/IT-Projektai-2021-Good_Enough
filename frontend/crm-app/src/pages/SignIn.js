@@ -129,7 +129,7 @@ export default function SignIn() {
             onChange={e => setPassword(e.target.value)}
             value={password}
             validators={['required', 'matchRegexp:[0-9]','matchRegexp:[A-Z]', 'matchRegexp:[$&+,:;=?@#|<>.^*()%!-]']}
-            errorMessages={['Privalomas laukas', 'Nors vienas skaičius', 'Bent viena didžioji raidė', 'Bent vienas spec. simbolis']}     
+            errorMessages={['Privalomas laukas', 'Neteisingas slaptažodis', 'Neteisingas slaptažodis', 'Neteisingas slaptažodis']}        
           />
           <Button
             type="submit"
