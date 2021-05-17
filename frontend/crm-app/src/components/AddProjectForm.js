@@ -1,86 +1,93 @@
-import React,{Component} from 'react';
-// import Avatar from '@material-ui/core/Avatar';
-// import Button from '@material-ui/core/Button';
-// import CssBaseline from '@material-ui/core/CssBaseline';
-// import TextField from '@material-ui/core/TextField';
-// import Grid from '@material-ui/core/Grid';
-// import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-// import Typography from '@material-ui/core/Typography';
-// import { makeStyles } from '@material-ui/core/styles';
-// import Container from '@material-ui/core/Container';
+import React, { Component } from 'react';
 import axios from 'axios';
 
-
-
-// const useStyles = makeStyles((theme) => ({
-//   paper: {
-//     marginTop: theme.spacing(8),
-//     display: 'flex',
-//     flexDirection: 'column',
-//         alignItems: 'center',
-//        backgroundColor: theme.palette.background.paper,
-//         border: '2px solid #000',
-//         boxShadow: theme.shadows[5],
-//         padding: theme.spacing(2, 4, 3),
-//   },
-//   avatar: {
-//     margin: theme.spacing(1),
-//     backgroundColor: theme.palette.secondary.main,
-//   },
-//   form: {
-//     width: '100%', // Fix IE 11 issue.
-//     marginTop: theme.spacing(3),
-//   },
-//   submit: {
-//     margin: theme.spacing(3, 0, 2),
-//   },
-// }));
-
 class AddProjectForm extends Component {
-  state = {
-    title: "",
-    description: ""
-  };
+    constructor(props) {
+        super(props);
+        this.state = {
+            projectName: "",
+            projectDescription: "",
+            projectStatus: "",
+           
+        }
+    }
 
-  onTitleChange = e => {
-    this.setState({
-      title: e.target.value
-    });
-  };
+    handleChange = (event) => {
+        event.preventDefault();
+        const { name, value } = event.target
+        this.setState({
+            [name]: value
+        })
+    }
 
-  onDescriptionChange = e => {
-    this.setState({
-      description: e.target.value
-    });
-  };
-  handleSubmit = e => {
-    e.preventDefault();
-    const data = {
-      title: this.state.title,
-      description: this.state.description
-    };
-    axios
-      .post("https://60570137055dbd0017e84567.mockapi.io/grid/Books", data)
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
-  };
+    handleClick = (event) => {
+        event.preventDefault()
 
-  render() {
-    return (
-      <div className="post">
-        <form className="post" onSubmit={this.handleSubmit}>
-          <input
-            placeholder="Title" value={this.state.title}
-            onChange={this.onTitleChange} required
-          />
-          <textarea
-            placeholder="Description" value={this.state.description}
-            onChange={this.onDescriptionChange} required
-          />
-          <button type="submit">Create Post</button>
-        </form>
-      </div>
-    );
-  }
+        const productObject = {
+            projectName: this.state.projectName,
+            projectDescription: this.state.projectDescription,
+            projectStatus: this.state.projectStatus,
+       
+        };
+
+        axios.post('http://localhost:8080/api/projects/', productObject)
+            .then((res) => {
+                console.log(res.data)
+            }).catch((error) => {
+                console.log(error)
+            });
+
+        this.setState({
+            projectName: "",
+            projectDescription: "",
+            projectStatus: "",
+          
+        })
+
+    }
+    render() {
+
+        return (
+            <div>
+                <form className="container">
+                    <div>
+                        <label>projectName</label>
+                        <input type="text"
+                            name="projectName"
+                            value={this.state.projectName}
+                            className="form-control"
+                            placeholder="projectName"
+                            onChange={this.handleChange}
+                        />
+
+                    </div>
+                    <div>
+                        <label>projectDescription</label>
+                        <input type="text"
+                            name="projectDescription"
+                            value={this.state.projectDescription}
+                            className="form-control"
+                            placeholder="projectDescription"
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                    <div>
+                        <label>projectStatus</label>
+                        <input type="text"
+                            name="projectStatus"
+                            value={this.state.projectStatus}
+                            className="form-control"
+                            placeholder="projectStatus"
+                            onChange={this.handleChange}
+
+                        />
+                    </div>
+                    
+                    <button type="submit" className="btn btn-primary mt-2" onClick={this.handleClick}>SAVE</button>
+                </form>             
+            </div>
+        )
+    }
 }
+
 export default AddProjectForm;
