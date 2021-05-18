@@ -6,9 +6,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -39,6 +41,8 @@ public class Task {
 	private LocalDateTime taskCreated;
 	@UpdateTimestamp
 	private LocalDateTime taskModified = LocalDateTime.now();
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Project project;
 
 	public Task() {
 	}
@@ -108,6 +112,14 @@ public class Task {
 
 	public void setTaskModified(LocalDateTime taskModified) {
 		this.taskModified = taskModified;
+	}
+
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
 	}
 
 	@Override
