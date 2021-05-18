@@ -32,7 +32,8 @@ class AddProjectForm extends Component {
 
         axios.post('http://localhost:8080/api/projects/', productObject)
             .then((res) => {
-                console.log(res.data)
+                console.log(res.data);
+                window.location.reload(false);
             }).catch((error) => {
                 console.log(error)
             });
