@@ -3,7 +3,7 @@ import { Card, Form, Container, Row, Col, Badge } from "react-bootstrap";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import TaskElement from "./TaskElement";
-import TaskBoxTarget from "./TaskBoxTarget";
+import TaskBoxTarget from "./TaskBox";
 import Backend from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";
 import ReactTooltip from "react-tooltip";
