@@ -29,7 +29,7 @@ export default class TaskList extends Component {
     }
 
     getLists = () => {
-            axios
+        axios
             .get(this.api)
             .then((data) => {
                 this.setState({ lists: data.data });
@@ -67,8 +67,8 @@ export default class TaskList extends Component {
         axios.delete(uri).then((response) => {
             if (response != null)
                 this.setState({
-                lists: this.state.lists.filter((x) => x.id !== taskId),
-            });
+                    lists: this.state.lists.filter((x) => x.id !== taskId),
+                });
         });
     };
 
@@ -117,7 +117,7 @@ export default class TaskList extends Component {
                             <Row>
                                 <Col>
                                     <a data-tip data-for="listOftasks">
-                                         List of tasks:{" "}
+                                        List of tasks:{" "}
                                         <Badge pill variant="light">
                                             {this.state.lists.length}
                                         </Badge>{" "}
@@ -137,7 +137,7 @@ export default class TaskList extends Component {
                                 <Col xs lg="2">
                                     <Link
                                         to={"addtask/" + this.projectId}
-                                        
+
                                     >
                                         {" "}
                                         Add task {" "}
