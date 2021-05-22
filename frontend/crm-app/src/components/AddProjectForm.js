@@ -7,7 +7,7 @@ class AddProjectForm extends Component {
         this.state = {
             projectName: "",
             projectDescription: "",
-            projectStatus: "",
+            projectStatus: "ACTIVE",
            
         }
     }
@@ -19,7 +19,9 @@ class AddProjectForm extends Component {
             [name]: value
         })
     }
-
+    cancel(){
+        this.props.history.push('/api/projects');
+    }
     handleClick = (event) => {
         event.preventDefault()
 
@@ -51,41 +53,41 @@ class AddProjectForm extends Component {
         return (
             <div>
                 <form className="container">
-                    <div>
-                        <label>projectName</label>
+                    <h3>Pridėti projektą</h3>
+                    <div className="my-2">
                         <input type="text"
                             name="projectName"
                             value={this.state.projectName}
                             className="form-control"
-                            placeholder="projectName"
+                            placeholder="Projekto pavadinimas"
                             onChange={this.handleChange}
                         />
-
                     </div>
-                    <div>
-                        <label>projectDescription</label>
+                   
+                    <div className="my-2">
                         <input type="text"
                             name="projectDescription"
                             value={this.state.projectDescription}
                             className="form-control"
-                            placeholder="projectDescription"
+                            placeholder="Projekto aprašymas"
                             onChange={this.handleChange}
+                          
                         />
                     </div>
-                    <div>
-                        <label>projectStatus</label>
+                    <div className="my-2">
                         <input type="text"
                             name="projectStatus"
                             value={this.state.projectStatus}
                             className="form-control"
-                            placeholder="projectStatus"
-                            onChange={this.handleChange}
-
+                            placeholder="Projekto statusas"
+                            //onChange={this.handleChange}
+                            //prideda tik tada kai active
                         />
                     </div>
-                    
-                    <button type="submit" className="btn btn-primary mt-2" onClick={this.handleClick}>SAVE</button>
-                </form>             
+                    <button type="submit" className="btn btn-success mt-2" onClick={this.handleClick}>Išsaugoti</button>
+                    <button type="submit" className="btn btn-danger mt-2 mx-2" onClick={this.cancel.bind(this)}>Atšaukti</button>
+                </form>
+                
             </div>
         )
     }
