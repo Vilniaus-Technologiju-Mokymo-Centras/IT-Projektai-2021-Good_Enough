@@ -4,7 +4,7 @@ import { ItemTypes } from './utils/Items'
 import axios from 'axios';
 
 
-export default function TaskBoxTarget(props) {
+export default function TaskBox(props) {
 
 
 
