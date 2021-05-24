@@ -77,7 +77,7 @@ export default function SignIn() {
               console.log(`resp.data`, resp.data)
               history.push("/api/projects");
           })
-          .catch((err) => { console.log(`error!!!!!!!!`, err) })
+          .catch((err) => { console.log(`error!!!!!!!!`, err);alert('Neteisingas prisijungimo vardas ir/arba slaptažodis') })
       
   }
 

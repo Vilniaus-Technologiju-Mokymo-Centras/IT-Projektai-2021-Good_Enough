@@ -84,7 +84,7 @@ useEffect(() => {
         <TableCell>
           <Button variant="contained" color="primary">Redaguoti</Button>
           <span> </span>
-          <Button variant="contained" color="secondary" onClick={() => deleteProject(row.id)}>Ištrinti</Button>
+          <Button variant="contained" color="secondary" onClick={(id) => { if (window.confirm('Ar tikrai norite ištrinti projektą?')) deleteProject(row.id)}}>Ištrinti</Button>
         </TableCell>
       </TableRow>
       <TableRow>
