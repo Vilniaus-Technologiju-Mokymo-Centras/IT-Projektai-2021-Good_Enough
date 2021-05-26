@@ -4,6 +4,7 @@ import SignIn from "./pages/SignIn";
 import ProjectsBoard from "./pages/ProjectsBoard";
 import StatusBoard from "./pages/StatusBoard";
 import TasksBoard from "./pages/TasksBoard";
+import EditProjectComponent from "./components/EditProjectComponent";
 
 import axios from 'axios';
 
@@ -19,6 +20,9 @@ export default function App() {
           </Route>
           <Route exact path="/api/projects">
             <ProjectsBoard /> 
+        </Route>
+         <Route exact path="/api/projects/:id">
+            <EditProjectComponent /> 
           </Route>
           <Route exact path="/status">
             <StatusBoard />
