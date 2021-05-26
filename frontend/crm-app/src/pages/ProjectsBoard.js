@@ -23,6 +23,8 @@ import ListAltIcon from '@material-ui/icons/ListAlt';
 import TimelapseIcon from '@material-ui/icons/Timelapse';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import { Link } from 'react-router-dom';
+import ImportExportIcon from '@material-ui/icons/ImportExport';
+import { Button} from '@material-ui/core';
 // import AddIcon from '@material-ui/icons/Add';
 // import Fab from '@material-ui/core/Fab';
 // import Tooltip from '@material-ui/core/Tooltip';
@@ -116,6 +118,18 @@ export default function MiniDrawer() {
     //jei saugojot kazkur userio info, is ten reikia istrint
     history.push('/');})
   };
+
+  const getProjectCSV = () => {
+        return axios.get('http://localhost:8080/api/v1/projects/export').then((response) => {
+             const url = window.URL.createObjectURL(new Blob([response.data]));
+             const link = document.createElement('a');
+             link.href = url;
+             link.setAttribute('download', `projects.csv`); 
+             document.body.appendChild(link);
+             link.click();
+          });
+    }
+  
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -194,17 +208,11 @@ export default function MiniDrawer() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        {/* <div>
-          <TotalCards/>
-        </div> */}
-  
-      {/* <Tooltip title="Pridėti projektą" aria-label="add">
-        <Fab color="primary">
-          <AddIcon />
-        </Fab>
-      </Tooltip> */}
+
         <AddProject/>
-        <Projects/>
+        <Projects />
+        <br/>
+        <Button onClick={getProjectCSV} variant="outlined" className={classes.button} startIcon={<ImportExportIcon/>}>EKSPORTUOTI PROJEKTUS</Button>
         <br/>
       </main>
     </div>
