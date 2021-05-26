@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 //import PropTypes from 'prop-types';
-import ProjectsService from '../services/ProjectsService';
 import { makeStyles } from '@material-ui/core/styles';
 import axios from "axios";
 import Box from '@material-ui/core/Box';
@@ -22,6 +21,8 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import Tooltip from '@material-ui/core/Tooltip';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import { GridColumnsToolbarButton } from '@material-ui/data-grid';
+import { Link } from 'react-router-dom';
+
 const useRowStyles = makeStyles({
   root: {
     '& > *': {
@@ -48,7 +49,7 @@ function Row(props) {
   const classes = useRowStyles();
   const [tasks, setTasks] = React.useState([]);
 
-  const getTasks =() => {
+  const getTasks = () => {
     const id = row.id;
     axios.get("http://localhost:8080/api/projects/"+id+"/tasks").then((response) =>{console.log(response.data);
   });
@@ -62,10 +63,15 @@ useEffect(() => {
     axios.delete("http://localhost:8080/api/projects/"+id).then((response) =>{props.getProjects();
   });
   }
+
   // const editProject = (id) => {
-  //   axios.put("http://localhost:8080/api/projects/"+id).then((response) =>{props.getProjects();
+  //   axios.put("http://localhost:8080/api/projects/" + id).then((response) => {
+  //     props.history.push('/');
+     
   // });
   // }
+
+  
   return (
     <React.Fragment>
       <TableRow className={classes.root}>
@@ -79,10 +85,10 @@ useEffect(() => {
         </TableCell>
         <TableCell>{row.projectDescription}</TableCell>
         <TableCell>{row.projectStatus}</TableCell>
-        <TableCell>{row.pro}</TableCell>
-        <TableCell>{row.TotalTasks}</TableCell>
+        <TableCell>{row.taskCount}</TableCell>
+        <TableCell>{row.undoneTaskCount}</TableCell>
         <TableCell>
-          <Button variant="contained" color="primary">Redaguoti</Button>
+         <Link to={`/api/projects/${row.id}`} style={{ textDecoration: 'none' }}><Button variant="contained">Regaduoti</Button></Link>
           <span> </span>
           <Button variant="contained" color="secondary" onClick={(id) => { if (window.confirm('Ar tikrai norite ištrinti projektą?')) deleteProject(row.id)}}>Ištrinti</Button>
         </TableCell>
@@ -107,11 +113,11 @@ useEffect(() => {
                 </TableHead>
                 <TableBody>
                   {row.tasks&&row.tasks.map((tasksRow) => (
-                    <TableRow key={tasksRow.taskId}>
-                      <TableCell component="th" scope="row">{tasksRow.taskId}</TableCell>
-                      <TableCell>{tasksRow.taskTitle}</TableCell>
-                      <TableCell>{tasksRow.taskDesc}</TableCell>
+                    <TableRow key={tasksRow.taskName}>
+                      <TableCell component="th" scope="row">{tasksRow.taskName}</TableCell>
+                      <TableCell>{tasksRow.taskDescription}</TableCell>
                       <TableCell>{tasksRow.taskPriority}</TableCell>
+                      <TableCell>{tasksRow.taskStatus}</TableCell>
                       <TableCell>{tasksRow.taskStatus}</TableCell>
                       <TableCell>
                         <span> </span>
@@ -190,6 +196,7 @@ export default function CollapsibleTable() {
   }, []);
 
   return (
+ 
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
         <TableHead>
@@ -198,8 +205,8 @@ export default function CollapsibleTable() {
             <TableCell>Pavadinimas</TableCell>
             <TableCell>Aprašymas</TableCell>
             <TableCell>Būsena</TableCell>
-            <TableCell>Užduotys</TableCell>
-            <TableCell>Užduotys</TableCell>
+            <TableCell>Viso užduočių</TableCell>
+            <TableCell>Neįvykdyta</TableCell>
             <TableCell>Veiksmai</TableCell>
           </TableRow>
         </TableHead>
@@ -209,6 +216,8 @@ export default function CollapsibleTable() {
           ))}
         </TableBody>
       </Table>
-    </TableContainer>
+      </TableContainer>
+     
   );
+      
 }
