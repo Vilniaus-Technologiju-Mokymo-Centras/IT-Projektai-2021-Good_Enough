@@ -1,5 +1,4 @@
-import React, {useState, useEffect} from 'react';
-//import PropTypes from 'prop-types';
+import React, {useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import axios from "axios";
 import Box from '@material-ui/core/Box';
@@ -20,7 +19,6 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Tooltip from '@material-ui/core/Tooltip';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import { GridColumnsToolbarButton } from '@material-ui/data-grid';
 import { Link } from 'react-router-dom';
 
 const useRowStyles = makeStyles({
@@ -47,17 +45,17 @@ function Row(props) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
   const classes = useRowStyles();
-  const [tasks, setTasks] = React.useState([]);
+//   const [tasks, setTasks] = React.useState([]);
 
-  const getTasks = () => {
-    const id = row.id;
-    axios.get("http://localhost:8080/api/projects/"+id+"/tasks").then((response) =>{console.log(response.data);
-  });
-}
-useEffect(() => {
+//   const getTasks = () => {
+//     const id = row.id;
+//     axios.get("http://localhost:8080/api/projects/"+id+"/tasks").then((response) =>{console.log(response.data);
+//   });
+// }
+// useEffect(() => {
    
-  getTasks();
-}, [])
+//   getTasks();
+// }, [])
 
   const deleteProject = (id) => {
     axios.delete("http://localhost:8080/api/projects/"+id).then((response) =>{props.getProjects();
@@ -80,9 +78,12 @@ useEffect(() => {
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-        <TableCell component="th" scope="row">
+        <Link to={`/api/projects/${row.id}/tasks`} style={{ textDecoration: 'none' }}><TableCell component="th" scope="row">
           {row.projectName}
-        </TableCell>
+        </TableCell></Link>
+        {/* <TableCell component="th" scope="row">
+          {row.projectName}
+        </TableCell> */}
         <TableCell>{row.projectDescription}</TableCell>
         <TableCell>{row.projectStatus}</TableCell>
         <TableCell>{row.taskCount}</TableCell>

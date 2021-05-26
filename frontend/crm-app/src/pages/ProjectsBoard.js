@@ -152,7 +152,7 @@ export default function MiniDrawer() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Sveiki, prisijungę!
+            Sveiki, admin@mail.com!
           </Typography>
         </Toolbar>
       </AppBar>

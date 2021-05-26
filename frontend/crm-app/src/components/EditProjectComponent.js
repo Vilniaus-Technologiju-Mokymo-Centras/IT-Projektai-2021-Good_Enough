@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useHistory } from"react-router-dom";
  
 function EditProjectComponent() {
  
@@ -11,7 +12,7 @@ function EditProjectComponent() {
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [data, setData] = useState(null);
-
+  const history = useHistory();
     
   const handleSubmit = () => {
     setLoading(true);
@@ -27,7 +28,7 @@ function EditProjectComponent() {
         setProjectDescription('');
         setProjectStatus('');
       setLoading(false);
-     history.push('/api/projects')
+     window.history.push('/api/projects')
       
     }).catch(err => {
       setLoading(false);
@@ -39,42 +40,42 @@ function EditProjectComponent() {
     <div className="container p-3">
       <div style={{ maxWidth: 350 }}>
         <div classNames="form-group">
-          <label htmlFor="projectnamee">Project Name</label>
+          <label htmlFor="projectnamee">Projekto pavadinimas</label>
           <input
             type="text"
             className="form-control"
             id="projectName"
-            placeholder="Enter project name"
+            placeholder="Įveskite projekto pavadinimą"
             value={projectName}
             onChange={e => setProjectName(e.target.value)} />
         </div>
         <div classNames="form-group">
-          <label htmlFor="projectDescription" className="mt-2">Project Description</label>
+          <label htmlFor="projectDescription" className="mt-2">Projekto aprašymas</label>
           <input
             type="text"
             className="form-control"
             id="projectDescription"
-            placeholder="Enter project description"
+            placeholder="Įveskite projekto aprašymą"
             value={projectDescription}
             onChange={e => setProjectDescription(e.target.value)} />
               </div>
               <div classNames="form-group">
-          <label htmlFor="projectStatus" className="mt-2">Project Status</label>
+          <label htmlFor="projectStatus" className="mt-2">Projekto statusas</label>
           <input
             type="text"
             className="form-control"
             id="projectStatus"
-            placeholder="Enter project status"
+            placeholder="Įveskite projekto statusą"
             value={projectStatus}
             onChange={e => setProjectStatus(e.target.value)} />
         </div>
-        {isError && <small className="mt-3 d-inline-block text-danger">Something went wrong. Please try again later.</small>}
+        {isError && <small className="mt-3 d-inline-block text-danger">Kažkas negerai. Bandykite iš naujo.  </small>}
         <button
           type="submit"
           className="btn btn-primary mt-3"
           onClick={handleSubmit}
           disabled={loading}
-        >{loading ? 'Loading...' : 'Update'}</button>
+        >{loading ? 'Loading...' : 'Atnaujinti'}</button>
         {data && <div className="mt-3">
           <strong>Output:</strong><br />
           <pre>{JSON.stringify(data, null, 2)}</pre>
