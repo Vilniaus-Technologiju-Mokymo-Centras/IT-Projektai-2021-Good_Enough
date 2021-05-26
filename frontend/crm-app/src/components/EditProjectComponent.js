@@ -22,13 +22,13 @@ function EditProjectComponent() {
         projectDescription: projectDescription,
       projectStatus: projectStatus
     }
-    axios.put('http://localhost:8080/api/projects/', data).then(res => {
+    axios.put(`http://localhost:8080/api/projects/id`, data).then(res => {
       setData(res.data);
       setProjectName('');
         setProjectDescription('');
         setProjectStatus('');
       setLoading(false);
-     window.history.push('/api/projects')
+      history.push('/api/projects')
       
     }).catch(err => {
       setLoading(false);
@@ -40,42 +40,42 @@ function EditProjectComponent() {
     <div className="container p-3">
       <div style={{ maxWidth: 350 }}>
         <div classNames="form-group">
-          <label htmlFor="projectnamee">Projekto pavadinimas</label>
+          <label htmlFor="projectnamee">Project Name</label>
           <input
             type="text"
             className="form-control"
             id="projectName"
-            placeholder="Įveskite projekto pavadinimą"
+            placeholder="Enter project name"
             value={projectName}
             onChange={e => setProjectName(e.target.value)} />
         </div>
         <div classNames="form-group">
-          <label htmlFor="projectDescription" className="mt-2">Projekto aprašymas</label>
+          <label htmlFor="projectDescription" className="mt-2">Project Description</label>
           <input
             type="text"
             className="form-control"
             id="projectDescription"
-            placeholder="Įveskite projekto aprašymą"
+            placeholder="Enter project description"
             value={projectDescription}
             onChange={e => setProjectDescription(e.target.value)} />
               </div>
               <div classNames="form-group">
-          <label htmlFor="projectStatus" className="mt-2">Projekto statusas</label>
+          <label htmlFor="projectStatus" className="mt-2">Project Status</label>
           <input
             type="text"
             className="form-control"
             id="projectStatus"
-            placeholder="Įveskite projekto statusą"
+            placeholder="Enter project status"
             value={projectStatus}
             onChange={e => setProjectStatus(e.target.value)} />
         </div>
-        {isError && <small className="mt-3 d-inline-block text-danger">Kažkas negerai. Bandykite iš naujo.  </small>}
+        {isError && <small className="mt-3 d-inline-block text-danger">Something went wrong. Please try again later.</small>}
         <button
           type="submit"
           className="btn btn-primary mt-3"
           onClick={handleSubmit}
           disabled={loading}
-        >{loading ? 'Loading...' : 'Atnaujinti'}</button>
+        >{loading ? 'Loading...' : 'Update'}</button>
         {data && <div className="mt-3">
           <strong>Output:</strong><br />
           <pre>{JSON.stringify(data, null, 2)}</pre>
