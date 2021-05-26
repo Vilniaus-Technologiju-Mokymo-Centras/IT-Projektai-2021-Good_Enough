@@ -27,6 +27,7 @@ function EditProjectComponent() {
         setProjectDescription('');
         setProjectStatus('');
       setLoading(false);
+     history.push('/api/projects')
       
     }).catch(err => {
       setLoading(false);
