@@ -16,7 +16,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "projects")
 public class Project {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
@@ -28,7 +27,6 @@ public class Project {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "project_status")
 	private ProjectStatus projectStatus;
-
 	@OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
 	private List<Task> listOfTasks;
 

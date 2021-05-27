@@ -120,7 +120,8 @@ export default function MiniDrawer() {
   };
 
   const getProjectCSV = () => {
-        return axios.get('http://localhost:8080/api/v1/projects/export').then((response) => {
+        return axios.get('http://localhost:8080/api/projects/export')
+        .then((response) => {
              const url = window.URL.createObjectURL(new Blob([response.data]));
              const link = document.createElement('a');
              link.href = url;
@@ -216,5 +217,7 @@ export default function MiniDrawer() {
         <br/>
       </main>
     </div>
+    
   );
+  
 }
