@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useHistory } from"react-router-dom";
@@ -37,6 +37,15 @@ function EditProjectComponent() {
       setIsError(true);
     });
   }
+
+  useEffect(() => {
+    axios.get(`http://localhost:8080/api/projects/` + id).then(res=>{    
+    setProjectName(res.data.projectName);
+    setProjectDescription(res.data.projectDescription);
+    setProjectStatus(res.data.projectStatus);
+        }
+        )  
+      },[]);
  
   return (
     <div className="container p-3">
