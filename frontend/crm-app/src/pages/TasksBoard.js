@@ -134,7 +134,7 @@ const history = useHistory();
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Sveiki, prisijungę!
+            Sveiki prisijungę!
           </Typography>
         </Toolbar>
       </AppBar>
