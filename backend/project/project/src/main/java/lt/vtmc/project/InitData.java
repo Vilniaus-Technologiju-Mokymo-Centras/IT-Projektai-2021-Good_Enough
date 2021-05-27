@@ -6,10 +6,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import lt.vtmc.project.command.ProjectCommand;
+import lt.vtmc.project.command.TaskCommand;
 import lt.vtmc.project.model.ProjectStatus;
+import lt.vtmc.project.model.TaskStatus;
 import lt.vtmc.project.model.User;
 import lt.vtmc.project.repository.UserRepository;
 import lt.vtmc.project.service.ProjectService;
+import lt.vtmc.project.service.TaskService;
 
 @Component
 public class InitData implements CommandLineRunner {
@@ -23,6 +26,8 @@ public class InitData implements CommandLineRunner {
 	@Autowired
 	ProjectService projectService;
 
+	@Autowired
+	TaskService taskService;
 	@Override
 	public void run(String... args) throws Exception {
 
@@ -31,20 +36,19 @@ public class InitData implements CommandLineRunner {
 		u.setUserEmail("admin@mail.com");
 		u.setUserPassword(enc.encode("Password!1"));
 		repo.save(u);
-		for (int i = 1; i < 6; i++) {
+		for (int i = 1; i < 10; i++) {
 			ProjectCommand pc = new ProjectCommand();
 			pc.setProjectName("Project Nr." + i);
 			pc.setProjectDescription("Description fo project nr. " + i);
 			pc.setProjectStatus(ProjectStatus.ACTIVE);
 			projectService.createProject(pc);
-				for (int j = 1; j < 6; j++) {
+				for (int j = 1; j < 50; j++) {
 				TaskCommand tk = new TaskCommand();
 				tk.setTaskName("Task Nr." + j);
 				tk.setTaskDescription("Description for task nr. " + j);
 				tk.setTaskPriority(null);
 				tk.setTaskStatus(TaskStatus.TO_DO);
-				taskService.createTask(tk); }
-
+				taskService.createTask(tk);}
 		}
 
 	}
