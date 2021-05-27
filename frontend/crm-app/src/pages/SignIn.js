@@ -128,8 +128,8 @@ export default function SignIn() {
             autoComplete="current-password"
             onChange={e => setPassword(e.target.value)}
             value={password}
-            validators={['required', 'matchRegexp:[0-9]','matchRegexp:[A-Z]', 'matchRegexp:[$&+,:;=?@#|<>.^*()%!-]']}
-            errorMessages={['Privalomas laukas', 'Neteisingas slaptažodis', 'Neteisingas slaptažodis', 'Neteisingas slaptažodis']}        
+            validators={['required']}
+            errorMessages={['Privalomas laukas']}        
           />
           <Button
             type="submit"

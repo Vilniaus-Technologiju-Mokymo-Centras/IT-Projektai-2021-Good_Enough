@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useHistory } from"react-router-dom";
+import {useParams} from"react-router-dom";
  
 function EditProjectComponent() {
  
@@ -13,6 +14,7 @@ function EditProjectComponent() {
   const [isError, setIsError] = useState(false);
   const [data, setData] = useState(null);
   const history = useHistory();
+  let {id} = useParams();
     
   const handleSubmit = () => {
     setLoading(true);
@@ -22,7 +24,7 @@ function EditProjectComponent() {
         projectDescription: projectDescription,
       projectStatus: projectStatus
     }
-    axios.put(`http://localhost:8080/api/projects/id`, data).then(res => {
+    axios.put(`http://localhost:8080/api/projects/` + id, data).then(res => {
       setData(res.data);
       setProjectName('');
         setProjectDescription('');

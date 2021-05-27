@@ -14,6 +14,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
+import SearchIcon from "@material-ui/icons/Search";
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Projects from '../components/Projects';
@@ -25,6 +26,7 @@ import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import { Link } from 'react-router-dom';
 import ImportExportIcon from '@material-ui/icons/ImportExport';
 import { Button} from '@material-ui/core';
+import InputBase from "@material-ui/core/InputBase";
 // import AddIcon from '@material-ui/icons/Add';
 // import Fab from '@material-ui/core/Fab';
 // import Tooltip from '@material-ui/core/Tooltip';
@@ -211,6 +213,16 @@ export default function MiniDrawer() {
         <div className={classes.toolbar} />
 
         <AddProject/>
+        <SearchIcon /> 
+        <InputBase
+            placeholder="Search" variant="outlined" 
+            onChange={(e) => console.log(e.target.value)}
+            classes={{
+              root: classes.inputRoot,
+              input: classes.inputInput
+              
+            }}
+          />
         <Projects />
         <br/>
         <Button onClick={getProjectCSV} variant="outlined" className={classes.button} startIcon={<ImportExportIcon/>}>EKSPORTUOTI PROJEKTUS</Button>

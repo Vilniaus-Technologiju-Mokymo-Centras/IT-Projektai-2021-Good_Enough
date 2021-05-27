@@ -34,9 +34,17 @@ public class InitData implements CommandLineRunner {
 		for (int i = 1; i < 6; i++) {
 			ProjectCommand pc = new ProjectCommand();
 			pc.setProjectName("Project Nr." + i);
-			pc.setProjectDescription("Description fo project nr. " + 1);
+			pc.setProjectDescription("Description fo project nr. " + i);
 			pc.setProjectStatus(ProjectStatus.ACTIVE);
 			projectService.createProject(pc);
+				for (int j = 1; j < 6; j++) {
+				TaskCommand tk = new TaskCommand();
+				tk.setTaskName("Task Nr." + j);
+				tk.setTaskDescription("Description for task nr. " + j);
+				tk.setTaskPriority(null);
+				tk.setTaskStatus(TaskStatus.TO_DO);
+				taskService.createTask(tk); }
+
 		}
 
 	}
